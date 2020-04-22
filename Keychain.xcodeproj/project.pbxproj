@@ -13,6 +13,8 @@
 		F130449F2450576A004BBD06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F130449E2450576A004BBD06 /* Assets.xcassets */; };
 		F13044A22450576A004BBD06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F13044A02450576A004BBD06 /* LaunchScreen.storyboard */; };
 		F13044AA24507A90004BBD06 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13044A924507A90004BBD06 /* ViewModel.swift */; };
+		F13044AD2450DF50004BBD06 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13044AC2450DF50004BBD06 /* Credentials.swift */; };
+		F13044B02450DFE2004BBD06 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13044AF2450DFE2004BBD06 /* KeychainHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		F13044A12450576A004BBD06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F13044A32450576A004BBD06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F13044A924507A90004BBD06 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		F13044AC2450DF50004BBD06 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		F13044AF2450DFE2004BBD06 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +62,31 @@
 			children = (
 				F130449524505767004BBD06 /* AppDelegate.swift */,
 				F130449724505767004BBD06 /* SceneDelegate.swift */,
-				F130449924505767004BBD06 /* ViewController.swift */,
-				F13044A924507A90004BBD06 /* ViewModel.swift */,
+				F13044AB2450DF23004BBD06 /* View */,
 				F130449E2450576A004BBD06 /* Assets.xcassets */,
 				F13044A02450576A004BBD06 /* LaunchScreen.storyboard */,
 				F13044A32450576A004BBD06 /* Info.plist */,
+				F13044AE2450DFAB004BBD06 /* KeychainUtils */,
 			);
 			path = Keychain;
+			sourceTree = "<group>";
+		};
+		F13044AB2450DF23004BBD06 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F13044A924507A90004BBD06 /* ViewModel.swift */,
+				F130449924505767004BBD06 /* ViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F13044AE2450DFAB004BBD06 /* KeychainUtils */ = {
+			isa = PBXGroup;
+			children = (
+				F13044AC2450DF50004BBD06 /* Credentials.swift */,
+				F13044AF2450DFE2004BBD06 /* KeychainHelper.swift */,
+			);
+			path = KeychainUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +160,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F130449A24505767004BBD06 /* ViewController.swift in Sources */,
+				F13044B02450DFE2004BBD06 /* KeychainHelper.swift in Sources */,
 				F130449624505767004BBD06 /* AppDelegate.swift in Sources */,
+				F13044AD2450DF50004BBD06 /* Credentials.swift in Sources */,
 				F13044AA24507A90004BBD06 /* ViewModel.swift in Sources */,
 				F130449824505767004BBD06 /* SceneDelegate.swift in Sources */,
 			);

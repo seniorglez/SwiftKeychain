@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  Credentials.swift
 //  Keychain
 //
 //  Created by Diego Domínguez González on 22/04/2020.
@@ -8,6 +8,7 @@
 
 import Foundation
 
-class ViewModel {
-    
+struct Credentials {
+    var username: String
+    var password: String
 }

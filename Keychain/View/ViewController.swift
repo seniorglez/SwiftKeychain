@@ -9,7 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    let viewModel: ViewModel = ViewModel()
+    // MARK: UIElements
     let buttonLogIn: UIButton = UIButton()
     let userTextField: UITextField = UITextField()
     let passwordTextField: UITextField = UITextField()
@@ -72,6 +74,6 @@ class ViewController: UIViewController {
     }
     
     @objc func storeOnKeychain() {
-        print("storing on keychain")
+        viewModel.saveCredentials()
     }
 }
