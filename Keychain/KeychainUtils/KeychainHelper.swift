@@ -5,7 +5,8 @@
 //  Created by Diego Domínguez González on 22/04/2020.
 //  Copyright © 2020 Diego Domínguez González. All rights reserved.
 //
-
+// apple´s article about this: https://developer.apple.com/documentation/security/keychain_services/keychain_items/adding_a_password_to_the_keychain
+//Keychain error codes meaning: https://www.oreilly.com/library/view/ios-components-and/9780133086898/ch18lev2sec7.html
 import Foundation
 
 class KeychainHelper {
@@ -19,7 +20,7 @@ class KeychainHelper {
     }
     
     private init() {
-        
+        clearKeychain()//just for testing prouposes
     }
     
     func storeOnKeychain(credentials: Credentials, URL server: String) throws {
@@ -34,7 +35,13 @@ class KeychainHelper {
         guard status == errSecSuccess else { throw KeychainError.unhandledError(status: status) }    }
 }
 
-
+    func clearKeychain() {
+        let secItemClasses =  [kSecClassGenericPassword, kSecClassInternetPassword, kSecClassCertificate, kSecClassKey, kSecClassIdentity]
+        for itemClass in secItemClasses {
+            let spec: NSDictionary = [kSecClass: itemClass]
+            SecItemDelete(spec)
+      }
+}
 
 //Usually I add this extension on the Network group
 extension URL {

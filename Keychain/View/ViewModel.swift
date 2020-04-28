@@ -14,7 +14,7 @@ class ViewModel {
             try KeychainHelper.instance.storeOnKeychain(credentials: Credentials(username: "user", password: "123"), URL: URL.serverURL.absoluteString)
             print("credentials saved")
         } catch {
-            print("somethink go wrong")
+            print("somethink go wrong \(error)")
         }
     }
 }
