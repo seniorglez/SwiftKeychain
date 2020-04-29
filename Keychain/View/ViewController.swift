@@ -13,6 +13,9 @@ class ViewController: UIViewController {
     let viewModel: ViewModel = ViewModel()
     // MARK: UIElements
     let buttonLogIn: UIButton = UIButton()
+    let buttonUpdate: UIButton = UIButton()
+    let buttonRemove: UIButton = UIButton()
+    let buttonRetrieve: UIButton = UIButton()
     let userTextField: UITextField = UITextField()
     let passwordTextField: UITextField = UITextField()
     
@@ -26,7 +29,10 @@ class ViewController: UIViewController {
     func createUIElements() {
         configureUserTextField()
         configurePasswordTextField()
-        configureButton()
+        configureButtonLogIn()
+        configureButtonUpdate()
+        configureButtonRemove()
+        configureButtonRetrieve()
     }
     
     func configureUserTextField() {
@@ -56,11 +62,11 @@ class ViewController: UIViewController {
         ])
     }
     
-    func configureButton() {
+    func configureButtonLogIn() {
         buttonLogIn.setTitle("Log In", for: .normal)
         buttonLogIn.backgroundColor = .orange
         buttonLogIn.layer.cornerRadius = 5
-        buttonLogIn.addTarget(self, action: #selector(storeOnKeychain), for: .touchUpInside)
+        buttonLogIn.addTarget(self, action: #selector(saveCredentials), for: .touchUpInside)
         
         view.addSubview(buttonLogIn)
         buttonLogIn.translatesAutoresizingMaskIntoConstraints = false
@@ -73,7 +79,70 @@ class ViewController: UIViewController {
         ])
     }
     
-    @objc func storeOnKeychain() {
-        viewModel.saveCredentials()
+    func configureButtonUpdate() {
+        buttonUpdate.setTitle("Update", for: .normal)
+        buttonUpdate.backgroundColor = .orange
+        buttonUpdate.layer.cornerRadius = 5
+        buttonUpdate.addTarget(self, action: #selector(updateCredentials), for: .touchUpInside)
+        
+        view.addSubview(buttonUpdate)
+        buttonUpdate.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            buttonUpdate.topAnchor.constraint(equalTo: buttonLogIn.bottomAnchor, constant: 20),
+            buttonUpdate.heightAnchor.constraint(equalToConstant: 35),
+            buttonUpdate.widthAnchor.constraint(equalToConstant: view.frame.width/3),
+            buttonUpdate.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
+    
+    func configureButtonRemove() {
+        buttonRemove.setTitle("Remove", for: .normal)
+        buttonRemove.backgroundColor = .orange
+        buttonRemove.layer.cornerRadius = 5
+        buttonRemove.addTarget(self, action: #selector(removeCredentials), for: .touchUpInside)
+        
+        view.addSubview(buttonRemove)
+        buttonRemove.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            buttonRemove.topAnchor.constraint(equalTo: buttonUpdate.bottomAnchor, constant: 20),
+            buttonRemove.heightAnchor.constraint(equalToConstant: 35),
+            buttonRemove.widthAnchor.constraint(equalToConstant: view.frame.width/3),
+            buttonRemove.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
+    
+    
+    func configureButtonRetrieve() {
+        buttonRetrieve.setTitle("Retrieve", for: .normal)
+        buttonRetrieve.backgroundColor = .orange
+        buttonRetrieve.layer.cornerRadius = 5
+        buttonRetrieve.addTarget(self, action: #selector(retrieveCredentials), for: .touchUpInside)
+        
+        view.addSubview(buttonRetrieve)
+        buttonRetrieve.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            buttonRetrieve.topAnchor.constraint(equalTo: buttonRemove.bottomAnchor, constant: 20),
+            buttonRetrieve.heightAnchor.constraint(equalToConstant: 35),
+            buttonRetrieve.widthAnchor.constraint(equalToConstant: view.frame.width/3),
+            buttonRetrieve.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
+    
+    @objc func saveCredentials() {
+        viewModel.saveCredentials(username: "user", password: "pass")
+    }
+    
+    @objc func updateCredentials() {
+        viewModel.updateCredentials()
+    }
+    
+    @objc func removeCredentials() {
+        viewModel.removeCredentials()
+    }
+    @objc func retrieveCredentials() {
+        viewModel.retrieveCredentials()
     }
 }

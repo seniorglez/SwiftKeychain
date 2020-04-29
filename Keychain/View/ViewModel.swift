@@ -9,12 +9,43 @@
 import Foundation
 
 class ViewModel {
-    func saveCredentials() {
+    
+    let keychainHelper: KeychainHelper = KeychainHelper.instance
+    
+    func saveCredentials(username: String, password: String) {
         do {
-            try KeychainHelper.instance.storeOnKeychain(credentials: Credentials(username: "user", password: "123"), URL: URL.serverURL.absoluteString)
+            try keychainHelper.storeOnKeychain(credentials: Credentials(username: username, password: password), URL: URL.serverURL.absoluteString)
             print("credentials saved")
         } catch {
-            print("somethink go wrong \(error)")
+            print("ERROR: \(error)")
+        }
+    }
+    
+    func updateCredentials() {
+        do {
+            try keychainHelper.updateKeychain(credentials: Credentials(username: "user2", password: "456"), URL: URL.serverURL.absoluteString)
+            print("credentials updated")
+        } catch {
+            print("ERROR: \(error)")
+        }
+    }
+    
+    func removeCredentials() {
+        do{
+            try keychainHelper.removeFromKeychain(URL: URL.serverURL.absoluteString)
+            print("credentials removed")
+        } catch {
+            print("ERROR: \(error)")
+        }
+    }
+    
+    func retrieveCredentials() {
+        do{
+           let credentials: Credentials = try keychainHelper.retrieveFromKeychain(URL: URL.serverURL.absoluteString)
+            print("User: \(credentials.username)")
+            print("Password: \(credentials.password)")
+        } catch {
+            print("Error: \(error)")
         }
     }
 }
